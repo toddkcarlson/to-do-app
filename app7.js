@@ -23,42 +23,32 @@
 
      // attach the checkbox to the li
      newLi.appendChild(checkbox);
-
-      // create a new input
-     let button = document.createElement('input');
-
-     // set the input's type to button
-     button.type = "button";
-
-     // set the input's value to button
-     button.value = "Delete";
-
-     // set the input's value to button
-     button.id = "delete";
-     
-     // attach the checkbox to the li
-     newLi.appendChild(button);         
-
+        
      // attach the li to the ul
      toDoList.appendChild(newLi);
 
      //empty the input
-     newToDoText.value = '';
+     newToDoText.value = '';     
+    
+     var deleteButton = document.getElementsByTagName("button")[1];   
+      deleteButton.addEventListener("click", function() {
+        console.log("works");
+        var inputElems = document.querySelectorAll("input");
 
-     document.getElementById("delete").addEventListener("click", myDelete);
+        for (var i = 0; i < inputElems.length; i += 1) {
 
-     function myDelete() {
-        this.parentElement.remove(); 
-     }    
+            if (inputElems[i].checked) {
+                console.log(inputElems[i]);
+                inputElems[i].parentNode.remove();      
+            }   
+        }
+     }); 
+   });   
      
-//    document.getElementByID("delete").onclick = function() {
-//     this.parentElement.remove();        
-//    };
-     
-   });  
+ 
  }
 
  window.onload = function() {
-//   alert("The window has loaded!");
+   alert("The window has loaded!");
    onReady();
  };
