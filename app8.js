@@ -3,6 +3,22 @@
    const addToDoForm = document.getElementById('addToDoForm');
    const deleteButton = document.getElementsByTagName("button")[1];
 
+  deleteButton.addEventListener("click", function() {
+      console.log("works");
+      var inputElems = document.querySelectorAll("input");
+
+      console.log(inputElems);
+      for (var i = 0; i < inputElems.length; i += 1) {
+
+          if (inputElems[i].checked) {
+              inputElems[i].parentNode.remove();
+//              delete toDos[i];
+              toDos.splice(0,1); 
+            }
+        console.log(toDos);
+        }
+  }); 
+
   function createNewToDo() {
     const newToDoText = document.getElementById('newToDoText');
     if (!newToDoText) { return }
@@ -15,20 +31,7 @@
     newToDoText.value = '';    
 
     renderTheUI(toDos);    
-  }
-
-  deleteButton.addEventListener("click", function() {
-      console.log("works");
-      var inputElems = document.querySelectorAll("input");
-
-      for (var i = 0; i < inputElems.length; i += 1) {
-
-          if (inputElems[i].checked) {
-              console.log(inputElems[i]);
-              inputElems[i].parentNode.remove();      
-            }   
-        }
-  });   
+  }  
 
   function renderTheUI(toDos) {
    const todoList = document.getElementById('toDoList');
